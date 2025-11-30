@@ -1,0 +1,56 @@
+@use "../setting" as s;
+
+@mixin container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+@mixin container_inline {
+  width: 90%;
+  text-align: center;
+}
+
+@mixin flex_between {
+  display: flex;
+  justify-content: space-between;
+  // align-items: center;
+}
+
+@mixin section_under {
+  margin-bottom: 2rem;
+}
+
+@mixin h2_fontsize {
+  font-size: 34px;
+}
+
+@mixin h2_fontsize_tab {
+  font-size: 26px;
+}
+
+@mixin h2_fontsize_sp {
+  font-size: 20px;
+}
+
+@mixin flex_center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin service-inner_img {
+  display: block;
+  margin: 20px auto;
+  width: 100%;
+  object-fit: cover;
+}
+
+@mixin wrap_gap30 {
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+@mixin container_narrow {
+  width: 60%;
+  margin: 0 auto;
+}

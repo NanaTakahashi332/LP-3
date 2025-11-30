@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LP③</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  </head>
+  <body>
+    <div id="loading">
+      <div id="loading_box">
+        <div class="loading-one animation_loading">
+          <p class="loading-txt">ABC商事</p>
+        </div>
+      </div>
+      <div class="curtain" aria-hidden="true"></div>
+    </div>
+    <header>
+      <div class="header_inner">
+        <h1 class="title">ABC商事</h1>
+        <nav class="header_wrap">
+          <ul class="header_wrap_nav">
+            <li class="header_wrap_nav_list">
+              <a href="#vision" class="header_wrap_nav_list_a">VISION</a>
+            </li>
+            <li class="header_wrap_nav_list">
+              <a href="#service" class="header_wrap_nav_list_a">SERVICE</a>
+            </li>
+            <li class="header_wrap_nav_list">
+              <a href="#about" class="header_wrap_nav_list_a">ABOUT</a>
+            </li>
+            <li class="header_wrap_nav_list" class="header_wrap_nav_list_a">
+              <a href="#faq" class="header_wrap_nav_list_a">FAQ</a>
+            </li>
+            <li class="header_wrap_nav_list" class="header_wrap_nav_list_a">
+              <a href="#contact" class="header_wrap_nav_list_a">CONTACT</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="h-open sp-only">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <nav id="h-nav" class="sp-only">
+        <div id="h-nav__list">
+          <ul>
+            <li><a href="#vision">VISION</a></li>
+            <li><a href="#service">SERVICE</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <article>
+        <div class="fv"></div>
+        <section id="topics">
+          <h5>TOPICS</h5>
+          <p class="topics_p">
+            <span class="topics_span">2021.1.01</span>株式会社ABC商事設立
+          </p>
+        </section>
+        <section id="vision">
+          <h2>VISION</h2>
+          <div class="vision_box">
+            <img src="./img/pic_01.jpg" />
+            <h2 class="vision_title_sp">VISION</h2>
+            <div class="vision_box_item">
+              <h3>
+                わたしたちは、革新技術の提供により、<br />世界的課題の解決に貢献します。
+              </h3>
+              <p>わたしたちは新しい価値の創造を通じて社会に貢献します。</p>
+              <p class="vision_p_sp">
+                わたしたちは、革新技術・先端材料の提供により、世界的課題の解決に貢献します。
+              </p>
+            </div>
+          </div>
+        </section>
+        <section id="service">
+          <h2>SERVICE</h2>
+          <div class="service_box">
+            <div class="service_box_item fadeRightTrigger">
+              <h4>CONSULTING<br />コンサルティング事業</h4>
+              <p>
+                経営・システム・デジタルマーケティングの目線でのコンサルティングを行います。
+              </p>
+              <div class="service_button">
+                <a href="#" class="button_more"><span>MORE</span></a>
+              </div>
+            </div>
+            <img src="./img/pic_02.jpg" class="fadeRightTrigger" />
+          </div>
+          <div class="service_box">
+            <img src="./img/pic_03.jpg" class="fadeLeftTrigger" />
+            <div class="service_box_item fadeLeftTrigger">
+              <h4>DEVELOPMENT<br />受託開発事業</h4>
+              <p>プロジェクト/プロダクトマネージメントの支援を致します。</p>
+              <div class="service_button">
+                <a href="#" class="button_more"><span>MORE</span></a>
+              </div>
+            </div>
+          </div>
+          <div class="service_box">
+            <div class="service_box_item fadeRightTrigger">
+              <h4>EDUCATION<br />教育事業</h4>
+              <p>
+                新人エンジニアやデザイナーの教育、新人研修・プログラミング研修を徹底して行います。
+              </p>
+              <div class="service_button">
+                <a href="#" class="button_more"><span>MORE</span></a>
+              </div>
+            </div>
+            <img src="./img/pic_04.jpg" class="fadeRightTrigger" />
+          </div>
+          <!-- モバイル表示用カード（PCでは非表示） -->
+          <div class="service-card-mobile">
+            <div class="service-card-mobile__img">
+              <img src="./img/pic_02.jpg" alt="コンサルティング事業" />
+            </div>
+            <div class="service-card-mobile__body">
+              <p class="service-card-mobile__title-en">CONSULTING</p>
+              <p class="service-card-mobile__title-ja">コンサルティング事業</p>
+              <p class="service-card-mobile__text">
+                経営・システム・デジタルマーケティングの目線でのコンサルティングを行います。
+              </p>
+              <a href="#" class="service-card-mobile__more">MORE</a>
+            </div>
+          </div>
+          <div class="service-card-mobile">
+            <div class="service-card-mobile__img">
+              <img src="./img/pic_03.jpg" alt="コンサルティング事業" />
+            </div>
+            <div class="service-card-mobile__body">
+              <p class="service-card-mobile__title-en">DEVELOPMENT</p>
+              <p class="service-card-mobile__title-ja">受託開発事業</p>
+              <p class="service-card-mobile__text">
+                プロジェクト/プロダクトマネージメントの支援を致します。
+              </p>
+              <a href="#" class="service-card-mobile__more">MORE</a>
+            </div>
+          </div>
+          <div class="service-card-mobile">
+            <div class="service-card-mobile__img">
+              <img src="./img/pic_04.jpg" alt="コンサルティング事業" />
+            </div>
+            <div class="service-card-mobile__body">
+              <p class="service-card-mobile__title-en">EDUCATION</p>
+              <p class="service-card-mobile__title-ja">教育事業</p>
+              <p class="service-card-mobile__text">
+                新人エンジニアやデザイナーの教育、新人研修・プログラミング研修を徹底して行います。
+              </p>
+              <a href="#" class="service-card-mobile__more">MORE</a>
+            </div>
+          </div>
+        </section>
+        <section id="about">
+          <h2>ABOUT</h2>
+          <dl>
+            <dt>会社名</dt>
+            <dd>株式会社ABC商事</dd>
+            <dt>設立</dt>
+            <dd>2021年1月</dd>
+            <dt>資本金</dt>
+            <dd>1000万円</dd>
+            <dt>代表</dt>
+            <dd>山田　太郎</dd>
+            <dt>所在地</dt>
+            <dd>〒000-0000 東京都中央区1丁目1番1号</dd>
+            <dt>電話</dt>
+            <dd>00-1234-5678</dd>
+            <dt>主要取引先</dt>
+            <dd>XYZ商事<br />X&YCorporation<br />XYZ株式会社</dd>
+          </dl>
+        </section>
+        <section id="faq">
+          <h2>FAQ</h2>
+          <details class="accordion details fadeUpTrigger">
+            <summary class="summary">
+              お見積もりの目安はいくらからでしょうか？
+            </summary>
+            <p class="answer">
+              内容によって変化いたしますのでまずはお問い合わせフォームよりご相談ください。
+            </p>
+          </details>
+          <details class="accordion details fadeUpTrigger">
+            <summary class="summary">
+              東京以外からでの発注は可能でしょうか
+            </summary>
+            <p class="answer">回答が表示されます。</p>
+          </details>
+          <details class="accordion details fadeUpTrigger">
+            <summary class="summary">
+              セミナーやイベントの企画を依頼したいのですが
+            </summary>
+            <p class="answer">回答が表示されます。</p>
+          </details>
+          <details class="accordion details fadeUpTrigger">
+            <summary class="summary">
+              WEBを媒体とした記事作成は可能ですか？
+            </summary>
+            <p class="answer">回答が表示されます。</p>
+          </details>
+        </section>
+        <!-- <section id="faq">
+                <h2>FAQ</h2>
+        <details class="accordion details">
+    <summary>お見積もりの目安はいくらからでしょうか？</summary>
+    <p class="answer">内容によって変化いたしますのでまずはお問い合わせフォームよりご相談ください。</p>
+</details>
+<details class="accordion fadeUpTrigger details">
+    <summary>東京以外からでの発注は可能でしょうか</summary>
+    <p class="answer">回答が表示されます。</p>
+</details>
+<details class="accordion fadeUpTrigger details">
+    <summary>セミナーやイベントの企画を依頼したいのですが</summary>
+    <p class="answer">回答が表示されます。</p>
+</details>
+<details class="accordion fadeUpTrigger details">
+    <summary>WEBを媒体とした記事作成は可能ですか？</summary>
+    <p class="answer">回答が表示されます。</p>
+</details>
+
+    </section> -->
+        <section id="contact">
+          <h2>CONTACT</h2>
+          <div class="contact_form_item">
+            <p class="Form-Item-Label isMsg">会社名・部署名</p>
+            <textarea class="Form-Item-Textarea-title"></textarea>
+          </div>
+          <div class="contact_form_item">
+            <p class="Form-Item-Label isMsg">担当者名</p>
+            <textarea class="Form-Item-Textarea-title"></textarea>
+          </div>
+          <div class="contact_form_item">
+            <p class="Form-Item-Label isMsg">メールアドレス</p>
+            <textarea class="Form-Item-Textarea-title"></textarea>
+          </div>
+          <div class="contact_form_item">
+            <p class="Form-Item-Label isMsg">電話番号</p>
+            <textarea class="Form-Item-Textarea-title"></textarea>
+          </div>
+          <div class="contact_form_item">
+            <p class="Form-Item-Label isMsg">お問い合わせ内容</p>
+            <textarea class="Form-Item-Textarea-title textarea_free"></textarea>
+          </div>
+          <div class="contact_submit">
+            <input type="submit" class="Form-Btn" value="確認" />
+          </div>
+        </section>
+      </article>
+    </main>
+    <footer>
+      <h6>株式会社ABC商事</h6>
+      <p>@ ABC .INC</p>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="./js/loading.js"></script>
+    <script type="text/javascript" src="./js/header.js"></script>
+    <script type="text/javascript" src="./js/fadein.js"></script>
+    <script type="text/javascript" src="./js/faq.js"></script>
+    <script type="text/javascript" src="./js/smooth_scroll.js"></script>
+  </body>
+</html>

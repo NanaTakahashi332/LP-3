@@ -1,0 +1,1025 @@
+@use "../global" as *;
+@keyframes sweep {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes fadeout {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .curtain.is-active {
+    animation: none;
+    width: 100%;
+  }
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-size: 16px;
+  @include mq(pc) {
+    font-size: 100%;
+  }
+  @include mq(tab) {
+    font-size: 60%;
+  }
+  @include mq(sp) {
+    font-size: 80%;
+  }
+  box-sizing: border-box;
+  color: $font_gray;
+  #loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 10000000;
+    width: 100%;
+    height: 100%;
+    background: $white;
+    overflow: hidden;
+    #loading_box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      text-align: center;
+      .loading-one {
+        display: inline-block;
+        color: $theme_green;
+        font-size: 30px;
+        letter-spacing: 0.25em;
+        line-height: 2;
+        padding: 2em 0;
+        .loading-txt {
+          color: $theme_green;
+          font-size: 30px;
+          letter-spacing: 0.25em;
+          line-height: 2;
+          padding: 2em 0;
+        }
+      }
+    }
+    .curtain {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      width: 0; /* 0 → 100% に伸ばす */
+      height: 100%;
+      background: #009688;
+      pointer-events: none;
+    }
+    .curtain.is-active {
+      animation: sweep 1s ease forwards, fadeout 0.35s ease forwards 1s;
+    }
+  }
+  header {
+    // @include container;
+    // @include flex_between;
+    // display: flex;
+    align-items: center;
+    // justify-content: center;
+    gap: 3rem;
+    padding: 1.5rem 0;
+    position: relative;
+    position: fixed; // ヘッダー全体を画面に固定
+    top: 0;
+    left: 0;
+    width: 100%; // 幅を100%に広げる
+    z-index: 1000; // 最前面に来るように数値を大きく
+    background-color: $white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%; // 画面幅いっぱい
+    padding: 1.5rem 0;
+    // @include mq(tab) {
+    //   justify-content: center;
+    //   align-items: center;
+    // }
+    .header_inner {
+      @include container; // ここで width: 90% と margin: 0 auto が効く
+      @include flex_between; // Flexboxもここにかける
+      align-items: center;
+      gap: 3rem;
+      position: relative; // h-openなどのabsoluteの基準点にするため
+      .title {
+        font-size: 30px;
+        // position: absolute;
+        // left: 5%;
+        @include mq(tab) {
+          font-size: 20px;
+        }
+        @include mq(sp) {
+          font-size: 20px;
+        }
+        color: $theme_green;
+      }
+      .header_wrap {
+        // margin: 0 auto;
+        display: block;
+        transition: all 0.5s ease-in-out;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        // width: 100%;
+        text-align: center;
+        @include mq(pc) {
+          display: block;
+        }
+        @include mq(tab) {
+          display: block;
+        }
+        @include mq(sp) {
+          display: none;
+        }
+        .header_wrap_nav {
+          @include flex_between;
+          align-items: center;
+          // text-align: center;
+          .header_wrap_nav_list {
+            // width: 5rem;
+            display: inline-block;
+            margin: 0 1rem;
+            @include mq(tab) {
+              margin: 0 0.5rem;
+            }
+            .header_wrap_nav_list_a {
+              text-decoration: none;
+              color: $font_gray;
+              cursor: pointer;
+              &:hover {
+                transition: 0.5s;
+                color: $theme_green;
+              }
+            }
+          }
+        }
+      }
+    }
+    .h-open {
+      position: absolute;
+      // position: fixed;
+      z-index: 1000000;
+      // top: 0;
+      top: 50%;
+      right: 0;
+      cursor: pointer;
+      aspect-ratio: 1/1;
+      width: 3.75rem;
+      height: 3.75rem;
+      // right: 5%;
+      // background-color: #224466;
+      text-align: center;
+      transform: translateY(-50%);
+      @include mq(pc) {
+        display: none;
+      }
+      @include mq(sp) {
+        display: block;
+      }
+      & span {
+        @include mq(sp) {
+          display: inline-block;
+          transition: all 0.4s;
+          position: absolute;
+          // left: 10%;
+          height: 0.2rem;
+          border-radius: 2px;
+          background-color: $font_gray;
+          width: 50%;
+        }
+      }
+      & span:nth-of-type(1) {
+        top: 32%;
+      }
+      & span:nth-of-type(2) {
+        top: 50%;
+      }
+      & span:nth-of-type(3) {
+        top: 68%;
+      }
+      &.active span:nth-of-type(1) {
+        left: 24px;
+        top: 26px;
+        left: 15px;
+        transform: translateY(6px) rotate(-45deg);
+        width: 50%;
+      }
+      &.active span:nth-of-type(2) {
+        opacity: 0;
+      }
+      &.active span:nth-of-type(3) {
+        top: 38px;
+        left: 15px;
+        transform: translateY(-6px) rotate(45deg);
+        width: 50%;
+      }
+    }
+    .sp-only {
+      @include mq(pc) {
+        display: none;
+      }
+      @include mq(sp) {
+        display: block;
+      }
+    }
+    #h-nav {
+      display: none;
+      @include mq(sp) {
+        display: block;
+        position: fixed;
+        z-index: 999;
+        top: 0;
+        right: 0;
+        width: 75%;
+        height: 100vh;
+        background-color: #fff;
+        box-shadow: 0px 10px 10px rgb(0 0 0 / 20%);
+        background-color: #ccc;
+        transform: translateX(100%);
+        transition: transform 0.5s ease;
+      }
+      ul {
+        width: 70%;
+        display: block;
+        position: absolute;
+        z-index: 999;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        li {
+          text-align: center;
+          margin: 20% 0;
+          a {
+            color: #333;
+            display: block;
+            font-size: 1rem;
+            font-weight: 400;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+    #h-nav.panelactive {
+      @include mq(sp) {
+        transform: translateX(0);
+        background-color: #ccc;
+      }
+    }
+    // #h-nav {
+    //   position: fixed;
+    //   z-index: 999;
+    //   top: 0;
+    //   right: 0; // 右端配置
+    //   width: 50%;
+    //   height: 100vh;
+    //   background-color: #fff;
+    //   box-shadow: 0px 10px 10px rgb(0 0 0 / 20%);
+    //   // PCでは非表示
+    //   @include mq(pc) {
+    //     display: none;
+    //   }
+    //   @include mq(sp) {
+    //     display: block; // スマホでは要素を表示
+    //     // 【隠れている状態（スタート地点）】
+    //     // 画面の右外（100%の位置）へ移動させておく
+    //     transform: translateX(100%);
+    //     transition: transform 1s ease;
+    //   }
+    // }
+    // // #h-nav.panelactive {
+    // //   // display: none;
+    // //   @include mq(sp) {
+    // //     display: block;
+    // //     // left: 50%;
+    // //     right: 0;
+    // //     background-color: #ccc;
+    // //     transform: translateX(0);
+    // //   }
+    // #h-nav.panelactive {
+    //   @include mq(sp) {
+    //     transform: translateX(0);
+    //     background-color: #ccc;
+    //   }
+    //   & ul {
+    //     width: 70%;
+    //     display: block;
+    //     position: absolute;
+    //     z-index: 999;
+    //     top: 50%;
+    //     left: 50%;
+    //     transform: translateY(-50%) translateX(-50%);
+    //     & li {
+    //       text-align: center;
+    //       position: relative;
+    //       margin: 20% 0;
+    //       & a {
+    //         color: #333;
+    //         display: block;
+    //         font-size: 1rem;
+    //         font-weight: 400;
+    //         text-decoration: none;
+    //       }
+    //     }
+    //   }
+    // }
+  }
+  main {
+    article {
+      .fv {
+        display: block;
+        @include container;
+        @include section_under;
+        height: 80vh;
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: url(../img/main.jpg);
+        @include mq(sp) {
+          margin-bottom: 4rem;
+        }
+      }
+      #topics {
+        @include container;
+        border-left: 2px #333333 solid;
+        @include section_under;
+        @include mq(sp) {
+          margin-bottom: 4rem;
+        }
+        h5 {
+          font-size: 22px;
+          @include mq(tab) {
+            font-size: 20px;
+          }
+          @include mq(sp) {
+            font-size: 18px;
+          }
+          margin-bottom: 1rem;
+          margin-left: 1rem;
+        }
+        .topics_p {
+          margin-left: 1rem;
+          .topics_span {
+            font-size: 12px;
+            @include mq(pc) {
+              font-size: 100%;
+            }
+            @include mq(tab) {
+              font-size: 60%;
+            }
+            @include mq(sp) {
+              font-size: 80%;
+            }
+            margin-right: 2rem;
+          }
+        }
+      }
+      #vision {
+        @include container;
+        box-sizing: border-box;
+        @include container;
+        text-align: right;
+        padding-top: 4rem;
+        @include mq(sp) {
+          text-align: left;
+          margin-bottom: 4rem;
+          padding-top: 0;
+        }
+        @include section_under;
+        & h2 {
+          color: $theme_green;
+          @include h2_fontsize;
+          @include mq(tab) {
+            @include h2_fontsize_tab;
+          }
+          @include mq(sp) {
+            display: none;
+            @include h2_fontsize_sp;
+          }
+        }
+        .vision_box {
+          width: 100%;
+          margin-top: 2rem;
+          @include flex_between;
+          gap: 5%;
+          @include mq(sp) {
+            display: block;
+          }
+          img {
+            width: 40%;
+            object-fit: cover;
+            @include mq(sp) {
+              width: 100%;
+              margin-bottom: 2rem;
+            }
+          }
+          .vision_title_sp {
+            display: none;
+            @include mq(sp) {
+              display: block;
+              margin-bottom: 2rem;
+            }
+          }
+          h3 {
+            margin-bottom: 2rem;
+            color: $theme_green;
+            font-weight: bolder;
+            line-height: 2;
+            font-size: 20px;
+            @include mq(tab) {
+              font-size: 18px;
+            }
+            @include mq(sp) {
+              font-size: 16px;
+            }
+            &::after {
+              content: "";
+              display: block;
+              width: 100px;
+              height: 3px;
+              background-color: $theme_green;
+              margin: 1.5rem 0 0 auto;
+            }
+          }
+          p {
+            line-height: 3;
+            @include mq(sp) {
+              line-height: 1.75;
+            }
+          }
+          .vision_p_sp {
+            @include mq(sp) {
+              margin: 1.5rem 0;
+            }
+          }
+        }
+      }
+      #service {
+        @include container;
+        @include section_under;
+        margin-top: 10rem;
+        padding-top: 4rem;
+        @include mq(sp) {
+          margin: 2rem auto;
+        }
+        & h2 {
+          text-align: center;
+          @include h2_fontsize;
+          color: $font_gray;
+          margin: 0 0 6rem 0;
+          @include mq(tab) {
+            @include h2_fontsize_tab;
+          }
+          @include mq(sp) {
+            @include h2_fontsize_sp;
+            margin-bottom: 2.5rem;
+          }
+        }
+        .service_box {
+          @include flex_between;
+          position: relative;
+          margin: 0 0 10rem 0;
+          @include mq(tab) {
+            margin: 0 0 6rem 0;
+          }
+          @include mq(sp) {
+            display: none;
+          }
+          &::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 18rem;
+            background: #f3f3f3;
+            z-index: 0;
+          }
+          .service_box_item {
+            width: 47.5%;
+            box-sizing: border-box;
+            height: 17rem;
+            margin: 7.5rem 0 0 0;
+            padding: 3rem 2rem;
+            // border: #333333 1px solid;
+            z-index: 1;
+            background-color: $white;
+            border-radius: 4px; // 角丸つけたい場合
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+            transform: translateY(70px);
+            & h4 {
+              margin-bottom: 1rem;
+              line-height: 1.5;
+              text-align: center;
+              font-size: 20px;
+              @include mq(tab) {
+                font-size: 16px;
+              }
+            }
+            & p {
+              text-align: center;
+              font-size: 16px;
+              line-height: 1.5;
+              @include mq(tab) {
+                font-size: 12px;
+              }
+            }
+            & p:last-of-type {
+              text-align: left;
+            }
+            .service_button {
+              .button_more {
+                // display: block;
+                // width: fit-content;
+                // margin: 1.5rem 0 0 auto;
+                // font-size: 14px;
+                // letter-spacing: 0.12em;
+                // color: #333;
+                // text-decoration: none;
+                // padding: 0.25rem;
+                // border-bottom: 2px solid #555;
+                // line-height: 1.25;
+                // transition: color 0.3s;
+                // overflow: hidden;
+                // z-index: 1;
+                // position: relative;
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 4rem;
+                margin: 1.5rem 0 0 auto;
+                // padding-bottom: 0.25rem;
+                // height: 50px;
+                line-height: 1.7;
+                font-size: 16px;
+                text-decoration: none;
+                color: #333;
+                border-bottom: 2px solid #555;
+                overflow: hidden;
+                transition: all 0.3s;
+                span {
+                  position: relative;
+                  @include mq(tab) {
+                    font-size: 12px;
+                  }
+                }
+                &::before {
+                  content: "";
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  bottom: 0;
+                  right: 0;
+                  background-color: #555;
+                  transform: translateY(100%);
+                  transition: all 0.3s;
+                }
+                &:hover {
+                  color: $white;
+                  &::before {
+                    transform: translateY(0);
+                  }
+                }
+              }
+            }
+          }
+          img {
+            width: 47.5%;
+            height: 18rem;
+            object-fit: cover;
+            z-index: 1;
+            transform: translateY(-70px);
+            object-fit: cover;
+            // margin: 7.5rem 0 0 0;
+          }
+        }
+        .service-card-mobile {
+          display: none;
+          // @include mq(sp) {
+          @include mq(sp) {
+            display: block;
+            width: 90%;
+            margin: 0 auto 3rem;
+            background: $white;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+          }
+          // .service-card-mobile {
+          .service-card-mobile__img img {
+            display: block;
+            width: 100%;
+            height: auto;
+            margin: 0 auto;
+            object-fit: cover;
+          }
+          .service-card-mobile__body {
+            width: 100%;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            box-sizing: border-box;
+            .service-card-mobile__title-en {
+              margin: 0 0 0.5rem;
+              font-size: 16px;
+              font-weight: 700;
+              letter-spacing: 0.15em;
+            }
+            .service-card-mobile__title-ja {
+              margin: 0 0 1rem;
+              font-size: 14px;
+              font-weight: 700;
+            }
+            .service-card-mobile__text {
+              margin: 0 0 32px;
+              font-size: 12px;
+              line-height: 1.8;
+              color: $font_gray;
+              text-align: left;
+            }
+            .service-card-mobile__more {
+              display: block;
+              width: fit-content;
+              margin-left: auto; // 右端に寄せる
+              font-size: 12px;
+              letter-spacing: 0.12em;
+              color: #333;
+              text-decoration: none;
+              padding-bottom: 4px;
+              border-bottom: 2px solid #555; // 下線
+              &:hover {
+                color: $white;
+                background-color: $font_gray;
+                transition: 0.5s;
+                border-bottom: none;
+              }
+            }
+          }
+          // }
+        }
+      }
+    }
+    #about {
+      @include container_narrow;
+      @include section_under;
+      padding-top: 4rem;
+      @include mq(sp) {
+        width: 90%;
+      }
+      & h2 {
+        text-align: center;
+        @include h2_fontsize;
+        color: $theme_green;
+        margin-bottom: 2.5rem;
+        @include mq(tab) {
+          @include h2_fontsize_tab;
+        }
+        @include mq(sp) {
+          @include h2_fontsize_sp;
+        }
+      }
+      & dl {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        box-sizing: border-box;
+        & dt {
+          box-sizing: border-box;
+          align-items: center;
+          width: 30%;
+          display: flex;
+          padding: 20px;
+          border-bottom: 1px solid #999;
+          line-height: 1.5;
+        }
+        & dd {
+          box-sizing: border-box;
+          align-items: center;
+          width: 70%;
+          display: flex;
+          padding: 20px;
+          border-bottom: 1px solid #999;
+          line-height: 1.5;
+        }
+      }
+    }
+    #faq {
+      @include container_narrow;
+      @include section_under;
+      margin-top: 10rem;
+      padding-top: 4rem;
+      @include mq(tab) {
+        margin-top: 8rem;
+      }
+      @include mq(sp) {
+        width: 90%;
+        margin: 2rem auto;
+      }
+      & h2 {
+        text-align: center;
+        @include h2_fontsize;
+        margin-bottom: 2.5rem;
+        @include mq(tab) {
+          @include h2_fontsize_tab;
+        }
+        @include mq(sp) {
+          @include h2_fontsize_sp;
+        }
+      }
+      .accordion {
+        width: 100%;
+        margin-bottom: 7px;
+        border: 2px solid #d0d0d0;
+        border-radius: 5px;
+        transition: 0.5s;
+        summary {
+          display: flex;
+          align-items: center;
+          position: relative;
+          margin: 0.75rem 0;
+          padding: 1em 2.5em 1em 3em;
+          color: #333;
+          cursor: pointer;
+          line-height: 1.5;
+          @include mq(tab) {
+            padding: 1em 1.5em 1em 5em;
+          }
+          @include mq(sp) {
+            padding: 1em 1.5em 1em 4em;
+          }
+          &::-webkit-details-marker {
+            display: none; // デフォルトの矢印を非表示
+          }
+          // プラスマーク（横線＋縦線）
+          &::before,
+          &::after {
+            content: "";
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            width: 14px;
+            height: 2px;
+            background-color: #999999;
+            transform: translateY(-50%);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+          }
+          // 横線
+          // &::before {
+          // }
+          // 縦線：90度回転させて＋に
+          &::after {
+            transform: translateY(-50%) rotate(90deg);
+          }
+        }
+        // 開いたときは×マークに変形
+        &[open] summary {
+          &::before {
+            transform: translateY(-50%) rotate(45deg);
+          }
+          &::after {
+            transform: translateY(-50%) rotate(-45deg);
+          }
+        }
+        p {
+          margin: 1rem;
+          padding: 2rem 1rem;
+          color: #333;
+          background-color: $very_weak_gray;
+          transition: 0.5s ease;
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.5s ease, padding 0.5s ease;
+          line-height: 1.7;
+          @include mq(tab) {
+            padding: 1rem;
+          }
+          @include mq(sp) {
+            // margin: 0.2rem 0.4rem 1rem 0.4rem;
+            margin: 0.5rem;
+            padding: 1rem;
+          }
+          // @include mq(tab) {
+          //   padding: 1rem 0.5rem;
+          // }
+          // @include mq(tab) {
+          //   padding: 1rem 0.5rem;
+          // }
+        }
+        &[open] {
+          p {
+            margin: 1rem;
+            padding: 2rem 1rem;
+            max-height: none;
+            opacity: 1;
+            animation: accordionFade 0.5s ease;
+            display: flex;
+            align-items: center;
+            text-align: left;
+            @include mq(tab) {
+              padding: 1rem;
+            }
+            @include mq(sp) {
+              max-height: 100px;
+              // margin: 0.2rem 0.4rem 1rem 0.4rem;
+              padding: 1.5rem 1rem 1.5rem 1rem;
+            }
+            // @include mq(tab) {
+            //   padding: 0.75rem 0.5rem;
+            // }
+          }
+        }
+        &.is-open p {
+          margin: 1rem;
+          padding: 2rem 1rem;
+          max-height: 100px;
+          @include mq(tab) {
+            padding: 1rem;
+          }
+          @include mq(sp) {
+            // max-height: 200px;
+            // margin: 0.2rem 0.4rem 1rem 0.4rem;
+            padding: 1.5rem 1rem 1.5rem 1rem;
+          }
+        }
+      }
+    }
+    #contact {
+      @include container_narrow;
+      margin-top: 10rem;
+      padding-top: 4rem;
+      @include mq(tab) {
+        margin-top: 8rem;
+      }
+      @include mq(sp) {
+        width: 90%;
+        @include h2_fontsize;
+        margin: 2rem auto;
+      }
+      & h2 {
+        text-align: center;
+        @include h2_fontsize;
+        color: $theme_green;
+        margin-bottom: 4rem;
+        @include mq(tab) {
+          @include h2_fontsize_tab;
+        }
+        @include mq(sp) {
+          margin-bottom: 2rem;
+          @include h2_fontsize_sp;
+        }
+      }
+      .contact_form_item {
+        padding: 0.75rem 0;
+        width: 100%;
+        display: flex;
+        // align-items: center;
+        margin: 0 auto;
+        box-sizing: border-box;
+        @include mq(sp) {
+          display: block;
+        }
+        .Form-Item-Label {
+          width: 35%;
+          letter-spacing: 0.05em;
+          @include mq(sp) {
+            width: 100%;
+            margin: 0.5rem 0;
+            font-size: 14px;
+          }
+        }
+        .Form-Item-Textarea-title {
+          height: 6rem;
+          border: 1px solid $font_gray;
+          border-radius: 4px;
+          margin-left: 2rem;
+          // padding: 0.75em;
+          height: 2.5rem;
+          flex: 1;
+          box-sizing: border-box;
+          resize: none;
+          @include mq(sp) {
+            width: 100%;
+            height: 3rem;
+            margin: 0 auto;
+          }
+        }
+        .textarea_free {
+          height: 10rem;
+        }
+      }
+      .contact_submit {
+        text-align: center;
+        margin: 2rem auto;
+        .Form-Btn {
+          display: inline-block;
+          padding: 0.5rem 3rem;
+          border: 1px solid #1a1a1a;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          background-color: $white;
+          font-weight: bold;
+          font-size: 16px;
+          @include mq(tab) {
+            padding: 0.25rem 1.5rem;
+            font-size: 14px;
+          }
+          @include mq(sp) {
+            font-size: 12px;
+          }
+          &:hover {
+            background-color: $font_gray;
+            color: $white;
+            transition: 0.5s;
+          }
+        }
+      }
+    }
+  }
+}
+footer {
+  width: 100%;
+  margin: 4rem 0;
+  text-align: center;
+  border-top: 1px solid #1a1a1a;
+  & h6 {
+    margin: 6rem 0 4rem 0;
+    letter-spacing: 6px;
+    font-size: 12px;
+  }
+  & p {
+    font-size: 10px;
+  }
+}
+/* フェードアップのスタイル */
+.fadeUp {
+  animation: fadeUpAnime 0.8s forwards; /* fadeUpAnimeを0.8秒で一回実行 */
+  opacity: 0;
+}
+
+/* フェードレフトのスタイル */
+.fadeLeft {
+  animation: fadeLeftAnime 0.8s forwards; /* fadeLeftAnimeを0.8秒で一回実行 */
+  opacity: 0;
+  overflow: hidden;
+}
+
+/* フェードライトのスタイル */
+.fadeRight {
+  animation: fadeRightAnime 0.8s forwards; /* fadeRightAnimeを0.8秒で一回実行 */
+  opacity: 0;
+  overflow: hidden;
+}
+
+/* トリガーアニメーションのスタイル */
+.fadeUpTrigger,
+.fadeLeftTrigger,
+.fadeRightTrigger {
+  opacity: 0; /* 最初は非表示 */
+}
+
+@keyframes fadeUpAnime {
+  from {
+    opacity: 0; /* 最初は非表示 */
+    transform: translateY(100px); /* 100px下に動かす */
+  }
+  to {
+    opacity: 1; /* 可視化する */
+    transform: translateY(0); /* 元の位置に戻す */
+  }
+}
+
+@keyframes fadeLeftAnime {
+  from {
+    opacity: 0; /* 最初は非表示 */
+    transform: translateX(100px); /* 100px右に動かす */
+  }
+  to {
+    opacity: 1; /* 可視化する */
+    transform: translateX(0); /* 元の位置に戻す */
+  }
+}
+
+@keyframes fadeRightAnime {
+  from {
+    opacity: 0; /* 最初は非表示 */
+    transform: translateX(-100px); /* 100px左に動かす */
+  }
+  to {
+    opacity: 1; /* 可視化する */
+    transform: translateX(0); /* 元の位置に戻す */
+  }
+}
+// }

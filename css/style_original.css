@@ -1,0 +1,168 @@
+body {
+  font-size: 20px;
+  box-sizing: border-box;
+}
+
+h2 {
+  margin: 100px 0 30px 0;
+  text-align: center;
+  font-size: 30px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: #ef98cf;
+}
+
+/* ヘッダー */
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: pink;
+}
+
+header img {
+  max-width: 50px;
+  padding: 10px 40px;
+}
+
+.header-list {
+  width: 700px;
+  padding-right: 40px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+}
+
+.header-list li {
+  max-width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* メインビジュアル */
+#fv img {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.concept {
+  margin: 10px 0;
+  text-align: center;
+  font-size: 24px;
+}
+
+/* サービス */
+.service-contents {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.service-inner {
+  width: 550px;
+  border: solid 2px #eeeeee;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+
+.service-inner img {
+  display: block;
+  margin: 20px auto;
+  width: 100%;
+  object-fit: cover;
+}
+
+.service-topic {
+  margin: 15px 0;
+  text-align: center;
+}
+
+.service-detail {
+  max-width: 350px;
+  margin: 0 auto;
+  line-height: normal;
+}
+
+/* ワークス */
+.works-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.works-list img {
+  width: 550px;
+}
+
+.works-list li p {
+  margin: 10px auto;
+  text-align: center;
+}
+
+.more-btn {
+  width: 550px;
+}
+
+.more-btn a {
+  width: 300px;
+  height: 80px;
+  margin: 200px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #eeeeee;
+  border-radius: 20px;
+}
+
+/* コンタクト */
+#contact p {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.mailfoam {
+  width: 400px;
+  height: 80px;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #eeeeee;
+  border-radius: 20px;
+  color: pink;
+  font-size: 36px;
+  text-shadow: 2px 3px 3px rgba(0, 0, 0, 0.4);
+  font-weight: bold;
+}
+
+#contact p {
+  text-align: center;
+}
+
+/* フッター */
+footer {
+  height: 30px;
+  margin-top: 100px;
+  font-size: 10px;
+  background-color: pink;
+}
+
+.footer-text {
+  text-align: center;
+  padding: 10px 0;
+  color: black;
+}

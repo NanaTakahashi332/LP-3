@@ -1,0 +1,24 @@
+$breakpoint: (
+  pc: "screen and (max-width: 1024px)",
+  tab: "screen and (max-width: 768px)",
+  sp: "screen and (max-width: 480px)",
+);
+
+@mixin mq($bp) {
+  @media #{map-get($breakpoint, $bp)} {
+    @content;
+  }
+}
+
+// body {
+//   font-size: 100%;
+//   @include mq(pc) {
+//     font-size: 80%;
+//   }
+//   @include mq(tab) {
+//     font-size: 60%;
+//   }
+//   @include mq(sp) {
+//     font-size: 40%;
+//   }
+// }
